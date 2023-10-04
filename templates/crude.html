@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"></script>
+    {% load static %}
+    <style>
+        img#logo {
+            height: 5vh;
+            width: 5vw;
+        }
+
+        a#homehead {
+            color: rgb(255, 255, 255);
+            font-style: italic;
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        form{
+        background-color: rgba(16, 89, 85, 0.847);
+        border-radius: 1cm;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-top: 1cm;
+        color: rgb(255, 255, 255);
+        padding-left: 150px;
+        padding-right: 150px;
+        font-size: medium;
+        font-weight: lighter;
+        
+           }
+      
+      
+        h2{
+            text-align: center;
+            
+        }
+        body {
+            background-image: url('{% static "images/f2.jpg"%}');
+            background-size: cover;
+            background-attachment: fixed;
+            
+        }
+       
+        
+       
+
+
+       
+
+      
+    </style>
+
+</head>
+
+<body class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'crud' %}">Enter details</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_products' %}"> View
+                        details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                </li>
+
+
+        </div>
+    </nav>
+
+    
+
+
+    <form enctype="multipart/form-data" action="{% url 'add_details' %}" method="post" id="format1">
+            {% csrf_token %}
+    
+    
+            <h2>STUDENT DETAILS</h2><br>
+                    <div class="form-group " id="fn">
+                        <label for="firstname" style="font-size: larger;">First Name:</label>
+                        <input type="text" class="form-control" name="firstname" placeholder="Enter your first name">
+                    </div>
+               
+    
+                
+                    <div class="form-group" id="ln">
+                        <label for="lastname" style="font-size: larger;">Last Name:</label>
+                        <input type="text" class="form-control" name="lastname" placeholder="Enter your last name">
+                    </div>
+    
+                    
+    
+             
+    
+    
+           
+    
+            
+                    <div class="form-group " id="fn">
+                        <label for="age" style="font-size: larger;">Age:</label>
+                        <input type="number" class="form-control" name="age" placeholder="Enter your age">
+                    </div>
+               
+    
+                    <div class="form-group" id="dob">
+                        <label for="dob" style="font-size: larger;">Date Of Birth:</label>
+                        <input type="date" class="form-control" name="dob">
+                    </div>
+    
+                    
+    
+              
+    
+            
+    
+           
+                    <div class="form-group " id="fn">
+                        <label for="gender" style="font-size: larger;">Select your Gender:</label>
+                        <br>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label><br>
+    
+                    </div>
+    
+                
+    
+    
+                
+           
+    
+            
+            
+    
+                
+                        <label for="department" style="font-size: larger;">Department:</label>
+                        <div class="form-group">
+    
+                            <select name="department" id="">
+                                <option name="department" value="nil">select</option>
+                                <option name="department" value="BCA">BCA</option>
+                                <option name="department" value="BSC">BSC COMPUTER SCIENCE</option>
+                                <option name="department" value="btech">B-TECH</option>
+                                <option name="department" value="BBA">BBA</option>
+                            </select>
+                        </div>
+    
+                    
+            
+    
+    
+            
+    
+            
+                    <div class="form-group " id="fn">
+                        <label for="nof" style="font-size: larger;">Name Of Father:</label>
+                        <input type="text" class="form-control" name="nof" placeholder="Enter your Father's name">
+                    </div>
+              
+    
+               
+                    <div class="form-group" id="ln">
+                        <label for="nom" style="font-size: larger;">Name Of Mother:</label>
+                        <input type="text" class="form-control" name="nom" placeholder="Enter your Mother's name">
+                    </div>
+    
+                 
+    
+            
+    
+    
+                    <div class="form-group " id="fn">
+                        <label for="email" style="font-size: larger;">E-mail:</label>
+                        <input type="text" class="form-control" name="email">
+                    </div>
+              
+               
+                    <div class="form-group" id="ln">
+                        <label for="phone" style="font-size: larger;">Phone:</label>
+                        <input type="text" class="form-control" name="phone">
+                    </div>
+    
+                
+    
+            
+    
+           
+                    <div class="form-group " id="fn">
+                        <label for="address" style="font-size: larger;">Address:</label>
+                        <textarea id="dies" class="form-control" name="address"></textarea>
+                    </div>
+              
+    
+             
+                    <div class="form-group" id="ln">
+                        <label for="file" style="font-size: large;">Insert images:</label>
+                        <input type="file" name="file" class="form-control" accept="image/*">
+                    </div>
+    
+    
+    
+    
+    
+    
+    
+           
+            <button type="submit" class="btn" style="margin-left: 150px; background-color: rgb(98, 4, 4); color: aliceblue;">Submit</button>
+    
+            
+     </form>   
+
+        
+
+
+           
+       
+
+        
+
+     
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>show student details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"></script>
+    {% load static %}
+    <style>
+        img#logo {
+            height: 5vh;
+            width: 5vw;
+        }
+
+        a#homehead {
+            color: rgb(255, 255, 255);
+            font-style: italic;
+            font-size: larger;
+            font-family: 'Times New Roman', Times, serif;
+
+        }
+        body {
+            background-image: url('{% static "images/img9.jpg"%}');
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            
+        }
+
+        table#tab1 {
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+        }
+
+        th {
+            background-color: antiquewhite;
+            color: rgb(0, 61, 152);
+            padding: 10px;
+        }
+
+        td {
+            color: rgb(0, 0, 0);
+        }
+        h2{
+            color: white;
+            font-weight: lighter;
+            text-align: center;
+            
+        }
+        h1{
+            color: antiquewhite;
+            font-weight: lighter;
+        }
+
+    </style>
+
+</head>
+
+<body class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'crud' %}"> Enter details</a>
+                </li>
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'show_products' %}"> View
+                        details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Logout</a>
+                </li>
+
+
+        </div>
+    </nav>
+    <!-- table -->
+    <br>
+    <br>
+    <h1 class="container-fluid">SHOW STUDENT DETAILS</h1>
+    <br>
+    <br>
+    <center>
+        <table id="tab1" border="2">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    
+                    <th>Department</th>
+                    <th>Name of Father</th>
+                    <th>Name of Mother</th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Image</th>
+                    <th>Action</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in product %}
+                <tr>
+
+                    <td>{{p.firstname}}</td>
+                    <td>{{p.lastname}}</td>
+                    <td>{{p.age}}</td>
+                    <td>{{p.dob}}</td>
+                    <td>{{p.gender}}</td>
+                  
+                    <td>{{p.department}}</td>
+                    <td>{{p.nof}}</td>
+                    <td>{{p.nom}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.phone}}</td>
+                    <td>{{p.address}}</td>
+                    <td>
+                        {% if p.image %}
+                        <img src="{{p.image.url }}" alt="" width="100px" height="100px">
+                        {% else %}
+                        <img src="{% static 'images/icon.png' %}"  width="100px" height="100px">
+                        {% endif %}
+                    </td>
+
+                    <td><a href="{% url 'editpage' p.id %}"><button class="btn btn-primary"
+                                style="margin-left: 4px; margin-bottom: 4px;">Edit</button></a>
+                        <a href="{% url 'deletepage' p.id %}"><button class="btn btn-danger"
+                              style="margin-left: 4px; margin-bottom: 4px;">Delete</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+
+    {% block content %}
+    {% endblock %}
+
+
+</body>
+
+</html>

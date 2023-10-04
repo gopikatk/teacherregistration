@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>update</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"></script>
+    {% load static %}
+    <style>
+        img#logo {
+            height: 5vh;
+            width: 5vw;
+        }
+
+        a#homehead {
+            color: goldenrod;
+            font-style: italic;
+            font-size: larger;
+
+        }
+
+        body {
+            background-image: url('{% static "images/img9.jpg"%}');
+            background-size: cover;
+        }
+        form{
+        background-color: rgba(15, 4, 67, 0.781);
+        border-radius: 1cm;
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-top: 1cm;
+        color: rgb(255, 255, 255);
+        padding-left: 200px;
+        padding-right: 200px;
+        font-size: larger;
+        font-weight: lighter;
+        
+           }
+    </style>
+
+</head>
+
+<body class="container-fluid">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'crud' %}"> Enter details</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_products' %}">View
+                        details</a>
+                </li>
+                
+
+
+        </div>
+    </nav>
+  
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- form -->
+
+
+    <h1 style="color: white;text-align: center;">UPDATE STUDENT DETAILS</h1>
+    <div style="text-align: center;">
+        <form method="post" enctype="multipart/form-data" action="{% url 'edit_Product_Details' product.id %}"><br>
+            {% csrf_token %}
+         
+                
+                            <div class="form-group">
+                                <label>FIRSTNAME:</label><br>
+                                <input class="form-control" type="text" name="firstname"  value="{{ product.firstname }}">
+                            </div>
+                            <div class="form-group">
+                                <label>LASTNAME:</label><br>
+                                <input class="form-control" type="text" name="lastname" value="{{ product.lastname }}">
+                            </div>
+                            <div class="form-group">
+                                <label>AGE:</label><br>
+                                <input class="form-control" type="number" name="age" value="{{ product.age}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dob" class="form-label">DOB</label>
+
+                      <input type="date" name="dob" class="form-control form-control-md" id="dob"  value="{{ product.dob|date:'Y-m-d'}}"/>
+                            </div>
+
+
+                            <div class="form-group">    
+                                <label>GENDER</label><br>
+                                <label class="option">
+                                    <input type="radio" name="gender" id="male" value="male" {% if product.gender == "male" %}checked{% endif %}/>Male
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="gender" id="male" value="female" {% if product.gender == "female" %}checked{% endif %}/>Female
+                                    <span class="checkmark"></span>
+                                </label>
+                               
+                            </div>
+                                    
+                                
+
+                                
+                             
+                            <label for="department">DEPARTMENT:</label>
+                            <div class="form-group">
+                                
+                              <select id="department" name="department">
+                                  <option value="">choose option</option>
+                                  <option name="department" value="">select</option>
+                                  <option name="department" value="BCA" {% if product.department == "BCA" %}selected{% endif %}>BCA</option>
+                                  <option name="department" value="BSC" {% if product.department == "BSC" %}selected{% endif %}>BSC COMPUTER SCIENCE</option>
+                                  <option name="department" value="btech" {% if product.department == "btech" %}selected{% endif %}>B-TECH</option>
+                                  <option name="department" value="BBA" {% if product.department == "BBA" %}selected{% endif %}>BBA</option>
+                            
+
+                                </select>
+                            </div><br>
+                            <div class="form-group">
+                                <label>NAME OF FATHER:</label>
+                            
+                                <input class="form-control" type="text" name="nof" value="{{ product.nof }}">
+                            </div>
+                            <div class="form-group">
+                                <label>NAME OF MOTHER:</label><br>
+
+                                <input class="form-control" type="text" name="nom" value="{{ product.nom }}">
+                            </div>
+                            <div class="form-group">
+                                <label>EM@IL:</label><br>
+                                <input class="form-control" type="text" name="email" value="{{ product.email }}">
+                            </div>
+                            <div class="form-group">
+                                <label>PHONE:</label><br>
+                                <input class="form-control" type="text" name="phone" value="{{ product.phone }}">
+                            </div>
+                            <div class="form-group">
+                                <label>ADDRESS</label><br>
+                                <input class="form-control" type="text" name="address" value="{{ product.address }}">
+                            </div>
+
+
+
+
+                                {% if product.image %}
+                                <img src="{{ product.image.url }}"  width="150vw" height="150vh">
+                                {% else %}
+                                <img src="{% static 'images/icon.jpg' %}" alt="Default Profile Picture" width="100vw" height="100vh"><br>
+                                {% endif %}
+                                
+                                <input type="file" name="file" accept="image/*"><br><br>
+                                <Button class="btn btn-primary" type="submit">UPDATE</Button><br>
+                           
+                     
+                
+           
+        </form>
+   
+
+    {% block content %}
+    {% endblock %}
+                               
+                                
+
+</body>
+
+</html>
